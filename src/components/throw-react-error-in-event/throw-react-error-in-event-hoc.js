@@ -1,6 +1,6 @@
 import { withErrorBoundary } from 'react-error-boundary';
-import ThrowReactError from './throw-react-error';
 import { sendErrorData } from '../../client-instrumentation';
+import ThrowReactErrorInEvent from './throw-react-error-in-event';
 
 const ErrorBoundaryFallbackComponent = ({ error, resetErrorBoundary }) => (
   <div role="alert">
@@ -27,12 +27,12 @@ const onReset = () => {
   console.log('Resetting...');
 };
 
-export const ThrowReactErrorHoc = withErrorBoundary(ThrowReactError, {
+export const ThrowReactErrorInEventHoc = withErrorBoundary(ThrowReactErrorInEvent, {
   FallbackComponent: ErrorBoundaryFallbackComponent,
   onError: onError(true),
   onReset,
 });
 
-ThrowReactErrorHoc.displayName = 'withErrorBoundary(ThrowReactError)';
+ThrowReactErrorInEventHoc.displayName = 'withErrorBoundary(ThrowReactErrorInEvent)';
 
-export default ThrowReactErrorHoc;
+export default ThrowReactErrorInEventHoc;
